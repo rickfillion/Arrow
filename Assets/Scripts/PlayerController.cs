@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isLeveling = false;
     private float levelingTimer = 0.0f;
-    private float levelingDuration = 3.0f;
+    private float levelingDuration = 2.0f;
 
     private float currentSpeed = 5.0f;
 
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var rotationSpeed = 110*Time.deltaTime;
+        var rotationSpeed = 150*Time.deltaTime;
 
 
         if (Input.GetKey(KeyCode.LeftArrow))
@@ -64,14 +64,14 @@ public class PlayerController : MonoBehaviour
     void LateUpdate()
     {
         var xPosition = transform.localPosition.x;
-        var minX = -3.0f;
-        var maxX = 3.0f;
+        var minX = -4.5f;
+        var maxX = 4.5f;
 
         // Debug.Log("localRotation = " + transform.rotation.z);
 
         // if they aren't pretty damn close to level, push them around
         if (Math.Abs(transform.rotation.z) > 0.02f) {
-            xPosition += (transform.rotation.z / - 2.5f);
+            xPosition += (transform.rotation.z / - 1.5f);
             xPosition = Math.Max(minX, xPosition);
             xPosition = Math.Min(maxX, xPosition);
             transform.position = new Vector3(xPosition, transform.position.y, transform.position.z);
