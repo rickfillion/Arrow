@@ -602,7 +602,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToTrack: {fileID: 8565109}
   lockX: 1
-  lockY: 0
+  lockY: 1
   lockZ: 0
 --- !u!1001 &730662594
 PrefabInstance:
