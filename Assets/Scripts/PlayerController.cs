@@ -8,9 +8,13 @@ public class PlayerController : MonoBehaviour
     private Transform levelTransform;
     private Transform maxLeftBankTransform;
     private Transform maxRightBankTransform;
+    private Transform maxUpBankTransform;
+    private Transform maxDownBankTransform;
 
     private bool isLevelingHorizontally = false;
-    private float horizontalLevelingTimer = 0.0f;
+    private bool isLevelingVertically = false;
+    private float levelingTimer = 0.0f;
+    private float verticalLevelingTimer = 0.0f;
     private float levelingDuration = 2.0f;
 
     private float currentSpeed = 5.0f;
@@ -24,6 +28,10 @@ public class PlayerController : MonoBehaviour
         maxLeftBankTransform.Rotate(0.0f,0.0f,45.0f);
         maxRightBankTransform = new GameObject().transform;
         maxRightBankTransform.Rotate(0.0f,0.0f,-45.0f);
+        maxUpBankTransform = new GameObject().transform;
+        maxUpBankTransform.Rotate(45.0f,0.0f,0.0f);
+        maxDownBankTransform = new GameObject().transform;
+        maxDownBankTransform.Rotate(-45.0f,0.0f,0.0f);
     }
 
 
@@ -31,7 +39,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         var rotationSpeed = 150*Time.deltaTime;
-
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -43,18 +50,33 @@ public class PlayerController : MonoBehaviour
             isLevelingHorizontally = false;
             transform.localRotation = Quaternion.RotateTowards(transform.localRotation, maxRightBankTransform.rotation, rotationSpeed);
         } else {
-            if (isLevelingHorizontally == true) {
-                horizontalLevelingTimer += Time.deltaTime;
-            } else {
-                isLevelingHorizontally = true;
-                horizontalLevelingTimer = 0.0f;
-            }
+            isLevelingHorizontally = true;
+            levelingTimer = 0.0f;
+        }
 
-            var levelingProgress = Math.Min(1.0f, horizontalLevelingTimer / levelingDuration);
-            transform.localRotation = Quaternion.Lerp(transform.localRotation, levelTransform.rotation, levelingProgress);
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            isLevelingVertically = false;
+            transform.localRotation = Quaternion.RotateTowards(transform.localRotation, maxUpBankTransform.rotation, rotationSpeed);
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            isLevelingVertically = false;
+            transform.localRotation = Quaternion.RotateTowards(transform.localRotation, maxDownBankTransform.rotation, rotationSpeed);
+        } else {
+            isLevelingVertically = true;
+            levelingTimer = 0.0f;
         }
 
 
+        if (isLevelingHorizontally == true && isLevelingVertically == true) {
+            var levelingProgress = Math.Min(1.0f, levelingTimer / levelingDuration);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, levelTransform.rotation, levelingProgress);
+            levelingTimer += Time.deltaTime;
+        }
+
+
+        // move the player forward
         var distanceTraveled = currentSpeed*Time.deltaTime;
         var newPosition = transform.position;
         newPosition.z += distanceTraveled;
@@ -65,7 +87,7 @@ public class PlayerController : MonoBehaviour
     {
         var minX = -4.5f;
         var maxX = 4.5f;
-        var minY = 1.0f;
+        var minY = 2.0f;
         var maxY = 6.0f;
         var newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
