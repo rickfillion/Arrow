@@ -50,8 +50,10 @@ public class PlayerController : MonoBehaviour
             isLevelingHorizontally = false;
             transform.localRotation = Quaternion.RotateTowards(transform.localRotation, maxRightBankTransform.rotation, rotationSpeed);
         } else {
-            isLevelingHorizontally = true;
-            levelingTimer = 0.0f;
+            if (isLevelingHorizontally == false) {
+                isLevelingHorizontally = true;
+                levelingTimer = 0.0f;
+            }
         }
 
         if (Input.GetKey(KeyCode.UpArrow))
@@ -64,8 +66,10 @@ public class PlayerController : MonoBehaviour
             isLevelingVertically = false;
             transform.localRotation = Quaternion.RotateTowards(transform.localRotation, maxDownBankTransform.rotation, rotationSpeed);
         } else {
-            isLevelingVertically = true;
-            levelingTimer = 0.0f;
+            if (isLevelingVertically == false) {
+                isLevelingVertically = true;
+                levelingTimer = 0.0f;
+            }
         }
 
 
