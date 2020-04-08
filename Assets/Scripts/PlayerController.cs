@@ -63,18 +63,31 @@ public class PlayerController : MonoBehaviour
 
     void LateUpdate()
     {
-        var xPosition = transform.localPosition.x;
         var minX = -4.5f;
         var maxX = 4.5f;
+        var minY = 1.0f;
+        var maxY = 6.0f;
+        var newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
         // Debug.Log("localRotation = " + transform.rotation.z);
 
         // if they aren't pretty damn close to level, push them around
         if (Math.Abs(transform.rotation.z) > 0.02f) {
+            var xPosition = newPosition.x;
             xPosition += (transform.rotation.z / - 1.5f);
             xPosition = Math.Max(minX, xPosition);
             xPosition = Math.Min(maxX, xPosition);
-            transform.position = new Vector3(xPosition, transform.position.y, transform.position.z);
+            newPosition.x = xPosition;
         }
+
+        if (Math.Abs(transform.rotation.x) > 0.02f) {
+            var yPosition = newPosition.y;
+            yPosition += (transform.rotation.x / - 1.5f);
+            yPosition = Math.Max(minY, yPosition);
+            yPosition = Math.Min(maxY, yPosition);
+            newPosition.y = yPosition;
+        }
+
+        transform.position = newPosition;
     }
 }
