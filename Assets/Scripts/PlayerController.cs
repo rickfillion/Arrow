@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour
     private Transform maxLeftBankTransform;
     private Transform maxRightBankTransform;
 
-    private bool isLeveling = false;
-    private float levelingTimer = 0.0f;
+    private bool isLevelingHorizontally = false;
+    private float horizontalLevelingTimer = 0.0f;
     private float levelingDuration = 2.0f;
 
     private float currentSpeed = 5.0f;
@@ -35,22 +35,22 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            isLeveling = false;
+            isLevelingHorizontally = false;
             transform.localRotation = Quaternion.RotateTowards(transform.localRotation, maxLeftBankTransform.rotation, rotationSpeed);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            isLeveling = false;
+            isLevelingHorizontally = false;
             transform.localRotation = Quaternion.RotateTowards(transform.localRotation, maxRightBankTransform.rotation, rotationSpeed);
         } else {
-            if (isLeveling == true) {
-                levelingTimer += Time.deltaTime;
+            if (isLevelingHorizontally == true) {
+                horizontalLevelingTimer += Time.deltaTime;
             } else {
-                isLeveling = true;
-                levelingTimer = 0.0f;
+                isLevelingHorizontally = true;
+                horizontalLevelingTimer = 0.0f;
             }
 
-            var levelingProgress = Math.Min(1.0f, levelingTimer / levelingDuration);
+            var levelingProgress = Math.Min(1.0f, horizontalLevelingTimer / levelingDuration);
             transform.localRotation = Quaternion.Lerp(transform.localRotation, levelTransform.rotation, levelingProgress);
         }
 
