@@ -40,6 +40,20 @@ public class PlayerController : MonoBehaviour
     {
         var rotationSpeed = 150*Time.deltaTime;
 
+        // Speed control
+        // TODO : make this non-linear
+        if (Input.GetKey(KeyCode.A)) {
+            currentSpeed += 3.0f*Time.deltaTime;
+        }
+        else if (Input.GetKey(KeyCode.Z)) {
+            currentSpeed -= 3.0f*Time.deltaTime;
+        }
+        var minSpeed = 4.0f;
+        var maxSpeed = 20.0f;
+        currentSpeed = Math.Min(maxSpeed, currentSpeed);
+        currentSpeed = Math.Max(minSpeed, currentSpeed);
+
+        // Horizontal banking
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             isLevelingHorizontally = false;
@@ -56,6 +70,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        // Vertical banking
         if (Input.GetKey(KeyCode.UpArrow))
         {
             isLevelingVertically = false;
