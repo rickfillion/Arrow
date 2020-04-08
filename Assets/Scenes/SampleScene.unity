@@ -149,7 +149,7 @@ PrefabInstance:
     - target: {fileID: 5784970482862829297, guid: 8225f7bc0efb54afd88d1a48f1911a5a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 5.02
       objectReference: {fileID: 0}
     - target: {fileID: 5784970482862829297, guid: 8225f7bc0efb54afd88d1a48f1911a5a,
         type: 3}
@@ -322,7 +322,7 @@ PrefabInstance:
     - target: {fileID: 5784970482862829297, guid: 8225f7bc0efb54afd88d1a48f1911a5a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 3.96
       objectReference: {fileID: 0}
     - target: {fileID: 5784970482862829297, guid: 8225f7bc0efb54afd88d1a48f1911a5a,
         type: 3}
@@ -396,7 +396,7 @@ PrefabInstance:
     - target: {fileID: 5784970482862829297, guid: 8225f7bc0efb54afd88d1a48f1911a5a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 3.63
       objectReference: {fileID: 0}
     - target: {fileID: 5784970482862829297, guid: 8225f7bc0efb54afd88d1a48f1911a5a,
         type: 3}
@@ -710,6 +710,7 @@ GameObject:
   - component: {fileID: 937321089}
   - component: {fileID: 937321088}
   - component: {fileID: 937321090}
+  - component: {fileID: 937321091}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -728,7 +729,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 0.6091581, g: 0.6500267, b: 0.764151, a: 1}
-  m_Intensity: 0.2
+  m_Intensity: 1.25
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -785,6 +786,23 @@ MonoBehaviour:
   lockX: 1
   lockY: 1
   lockZ: 0
+--- !u!114 &937321091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937321087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fc20610aab8140a3b19a10ae6ae8be0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockX: 1
+  startIntensity: 1.25
+  endIntensity: 0.25
+  duration: 4
+  lt: {fileID: 0}
 --- !u!1001 &1037135109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -810,7 +828,7 @@ PrefabInstance:
     - target: {fileID: 5784970482862829297, guid: 8225f7bc0efb54afd88d1a48f1911a5a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 3.49
       objectReference: {fileID: 0}
     - target: {fileID: 5784970482862829297, guid: 8225f7bc0efb54afd88d1a48f1911a5a,
         type: 3}
@@ -884,7 +902,7 @@ PrefabInstance:
     - target: {fileID: 5784970482862829297, guid: 8225f7bc0efb54afd88d1a48f1911a5a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 3.42
       objectReference: {fileID: 0}
     - target: {fileID: 5784970482862829297, guid: 8225f7bc0efb54afd88d1a48f1911a5a,
         type: 3}
@@ -1185,7 +1203,7 @@ PrefabInstance:
     - target: {fileID: 5784970482862829297, guid: 8225f7bc0efb54afd88d1a48f1911a5a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 3.17
       objectReference: {fileID: 0}
     - target: {fileID: 5784970482862829297, guid: 8225f7bc0efb54afd88d1a48f1911a5a,
         type: 3}
